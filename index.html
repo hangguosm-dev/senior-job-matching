@@ -1,25 +1,182 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Senior Job Matching Service</title>
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>시니어 맞춤 일자리 매칭 서비스</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-<header>
-<h1>시니어 맞춤 일자리 매칭 서비스</h1>
-<p>5W1H 기반 노인 일자리 매칭 웹서비스</p>
-</header>
+  <header class="site-header">
+    <div class="container header-grid">
+      <div>
+        <p class="eyebrow">5W1H Framework Project</p>
+        <h1>시니어 맞춤 일자리 매칭 서비스</h1>
+        <p class="header-desc">
+          건강 상태, 과거 경력, 근무 가능 시간, 현재 위치를 기반으로
+          65세 이상 시니어에게 적합한 일자리를 추천하는 웹서비스입니다.
+        </p>
+      </div>
+    </div>
+  </header>
 
-<main>
-<h2>서비스 소개</h2>
-<p>건강상태, 위치, 경력을 기반으로 맞춤형 일자리를 추천합니다.</p>
+  <nav class="main-nav">
+    <div class="container nav-grid">
+      <button class="tab-btn active" data-target="home">홈</button>
+      <button class="tab-btn" data-target="why">5W1H</button>
+      <button class="tab-btn" data-target="profile">프로필</button>
+      <button class="tab-btn" data-target="jobs">일자리 추천</button>
+      <button class="tab-btn" data-target="apply">지원 현황</button>
+      <button class="tab-btn" data-target="tech">구현 전략</button>
+    </div>
+  </nav>
 
-<button id="applyBtn">지원하기 테스트</button>
-<p id="status">대기중</p>
-</main>
+  <main class="container page-wrap">
+    <section id="home" class="page">
+      <div class="card">
+        <h2>서비스 개요</h2>
+        <p>
+          본 프로젝트는 초고령 사회 진입에 따라 노년층의 생산적 복지와
+          활동적 노화를 지원하기 위한 시니어 맞춤형 일자리 큐레이션 서비스입니다.
+        </p>
+        <p>
+          사용자는 앱 설치 없이 웹 브라우저에서 간단한 프로필을 입력하고,
+          건강 상태와 위치 조건에 맞는 일자리를 추천받을 수 있습니다.
+        </p>
+      </div>
+    </section>
 
-<script src="js/app.js"></script>
+    <section id="why" class="page hidden">
+      <div class="card">
+        <h2>5W1H 서비스 기획</h2>
+        <div class="w-grid">
+          <article><strong>Why</strong><p>초고령 사회 진입에 따른 생산적 복지와 활동적 노화를 지원합니다.</p></article>
+          <article><strong>Who</strong><p>구직 의지가 있는 65세 이상 시니어와 노인 적합형 일자리를 제공하는 기관입니다.</p></article>
+          <article><strong>What</strong><p>건강 상태, 경력, 위치 데이터를 기반으로 일자리를 추천하는 웹서비스입니다.</p></article>
+          <article><strong>When</strong><p>은퇴 후 제2의 커리어를 찾거나 단기 일자리를 탐색할 때 사용합니다.</p></article>
+          <article><strong>Where</strong><p>모바일 웹 브라우저에서 사용하며 PWA 형태로 확장 가능합니다.</p></article>
+          <article><strong>How</strong><p>반응형 웹, 공공데이터 API, 카카오맵 API, 접근성 중심 UI를 활용합니다.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="profile" class="page hidden">
+      <div class="card">
+        <h2>시니어 맞춤형 프로필</h2>
+
+        <div class="form-grid">
+          <label>
+            현재 주소
+            <input id="address" value="서울특별시 성북구 안암동" />
+          </label>
+
+          <label>
+            이동 가능 거리
+            <select id="radius">
+              <option value="1">반경 1km 이내</option>
+              <option value="3" selected>반경 3km 이내</option>
+              <option value="5">반경 5km 이내</option>
+            </select>
+          </label>
+
+          <label>
+            선호 직무
+            <select id="category">
+              <option value="전체">전체</option>
+              <option value="실내근무">실내근무</option>
+              <option value="좌식업무">좌식업무</option>
+              <option value="서비스">서비스</option>
+              <option value="단순노무">단순노무</option>
+            </select>
+          </label>
+
+          <label>
+            근무 가능 시간
+            <select id="time">
+              <option value="오전반">오전반</option>
+              <option value="오후반">오후반</option>
+              <option value="풀타임">풀타임</option>
+            </select>
+          </label>
+
+          <label>
+            보행 가능 수준
+            <select id="walk">
+              <option value="">선택 필요</option>
+              <option value="1">1점</option>
+              <option value="2">2점</option>
+              <option value="3">3점</option>
+              <option value="4">4점</option>
+              <option value="5">5점</option>
+            </select>
+          </label>
+
+          <label>
+            물건 들기 가능 수준
+            <select id="lift">
+              <option value="">선택 필요</option>
+              <option value="1">1점</option>
+              <option value="2">2점</option>
+              <option value="3">3점</option>
+              <option value="4">4점</option>
+              <option value="5">5점</option>
+            </select>
+          </label>
+        </div>
+
+        <button onclick="saveProfile()">프로필 저장</button>
+        <p id="profileMsg" class="message"></p>
+      </div>
+    </section>
+
+    <section id="jobs" class="page hidden">
+      <div class="card">
+        <h2>맞춤형 일자리 추천</h2>
+        <p>
+          거리, 건강 상태, 직무 조건을 기준으로 시니어에게 적합한 일자리를 추천합니다.
+        </p>
+        <button onclick="renderJobs()">추천 다시 보기</button>
+        <div id="jobSummary" class="summary-box"></div>
+        <div id="jobList" class="job-list"></div>
+      </div>
+    </section>
+
+    <section id="apply" class="page hidden">
+      <div class="card">
+        <h2>지원 현황 및 알림 시스템</h2>
+        <p>
+          지원 상태 변경 시 카카오 알림톡 또는 웹 알림으로 진행 상황을 안내하는 구조입니다.
+        </p>
+        <div id="applyList" class="job-list"></div>
+      </div>
+    </section>
+
+    <section id="tech" class="page hidden">
+      <div class="card">
+        <h2>구현 전략</h2>
+        <ol>
+          <li>React 또는 Vue.js 기반 반응형 웹 구조 설계</li>
+          <li>공공데이터포털 노인일자리 API 연동</li>
+          <li>카카오맵 API를 활용한 거리 계산</li>
+          <li>WCAG 기준을 고려한 고대비 UI 및 48px 이상 버튼 적용</li>
+          <li>지원하기 버튼, 예외 처리, 모달 테스트</li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <div id="modalBox" class="modal-backdrop hidden">
+    <div class="modal">
+      <h2 id="modalTitle">알림</h2>
+      <p id="modalText"></p>
+      <button onclick="closeModal()">확인</button>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p>GitHub Pages 제출용 웹 프로토타입</p>
+  </footer>
+
+  <script src="js/app.js"></script>
 </body>
 </html>
